@@ -3,14 +3,14 @@ const {
     DataTypes
 } = require('sequelize');
 module.exports = sequelize.define('SalaEstudio', {
-    Sala_Codigo: {
+    Codigo: {
         primaryKey: true,
         type: DataTypes.BIGINT,
         notNull: true,
         unsigned: true
     },
     Nombre: {
-        type: DataTypes.VARCHAR,
+        type: DataTypes.STRING,
         notNull: true
     },
     Inventario: {
@@ -20,8 +20,20 @@ module.exports = sequelize.define('SalaEstudio', {
     Num_Personas_Max: {
         type: DataTypes.INTEGER,
         notNull: true
+    },
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+    },
+    updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+    },
+    deletedAt: {
+        allowNull: true,
+        type: DataTypes.DATE
     }
 }, {
-    tableName: 'Sala De Estudio',
+    tableName: 'SalaEstudio',
     paranoid: true
 });

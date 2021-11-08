@@ -3,7 +3,7 @@ const {
   DataTypes
 } = require('sequelize');
 module.exports = sequelize.define('Prestamos', {
-  Cod_Usuario: {
+  /*Cod_Usuario: {
     primaryKey: true,
     type: DataTypes.BIGINT,
     notNull: true,
@@ -14,7 +14,7 @@ module.exports = sequelize.define('Prestamos', {
     type: DataTypes.BIGINT,
     notNull: true,
     unsigned: true
-  },
+  },*/
   Fecha_Prestamo: {
     type: DataTypes.DATE,
     notNull: true
@@ -26,6 +26,18 @@ module.exports = sequelize.define('Prestamos', {
   Multa_Dia: {
     type: DataTypes.INTEGER,
     notNull: true
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+  },
+  deletedAt: {
+    allowNull: true,
+    type: DataTypes.DATE
   }
 }, {
   tableName: 'Prestamos',

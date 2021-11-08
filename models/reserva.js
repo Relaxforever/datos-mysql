@@ -3,18 +3,18 @@ const {
     DataTypes
 } = require('sequelize');
 module.exports = sequelize.define('Reserva', {
-    Cod_Usuario: {
+    /*Cod_Usuario: {
         primaryKey: true,
         type: DataTypes.BIGINT,
         notNull: true,
         unsigned: true
     },
-    Sala_Codigo: {
+    Cod_Sala: {
         primaryKey: true,
         type: DataTypes.BIGINT,
         notNull: true,
         unsigned: true
-    },
+    },*/
     Horario_Inicio: {
         type: DataTypes.DATE,
         notNull: true
@@ -26,6 +26,18 @@ module.exports = sequelize.define('Reserva', {
     Disponibilidad: {
         type: DataTypes.ENUM("Disponible", "Ocupado"),
         notNull: true
+    },
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+    },
+    updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+    },
+    deletedAt: {
+        allowNull: true,
+        type: DataTypes.DATE
     }
 }, {
     tableName: 'Reserva',

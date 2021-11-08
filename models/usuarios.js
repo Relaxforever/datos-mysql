@@ -24,15 +24,27 @@ module.exports = sequelize.define('Usuarios', {
     notNull: true,
   },
   Correo: {
-    type: DataTypes.VARCHAR,
+    type: DataTypes.STRING,
     unique: true,
     notNull: true
   },
   F_Nacimiento: {
-    type: DataTypes.Date
+    type: DataTypes.DATE
   },
   Carrera: {
-    type: DataTypes.VARCHAR
+    type: DataTypes.STRING
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+  },
+  deletedAt: {
+    allowNull: true,
+    type: DataTypes.DATE
   }
 
 }, {

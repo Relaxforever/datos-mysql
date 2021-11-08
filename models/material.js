@@ -15,7 +15,7 @@ module.exports = sequelize.define('Material', {
         notNull: true,
     },
     Categoria: {
-        type: DataTypes.JSON,
+        type: DataTypes.STRING,
         notNull: true,
     },
     Autores: {
@@ -26,17 +26,29 @@ module.exports = sequelize.define('Material', {
         notNull: true
     },
     Formato: {
-        type: DataTypes.VARCHAR,
+        type: DataTypes.STRING,
         notNull: true
     },
-    Codigo_Barras: {
-        type: DataTypes.VARCHAR,
+    Nombre: {
+        type: DataTypes.STRING,
         notNull: true
     },
     Num_Ejemplares: {
         type: DataTypes.INTEGER,
         notNull: true
     },
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+    },
+    updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+    },
+    deletedAt: {
+        allowNull: true,
+        type: DataTypes.DATE
+    }
 
 
 }, {
