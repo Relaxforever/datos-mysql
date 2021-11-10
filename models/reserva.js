@@ -3,12 +3,13 @@ const {
     DataTypes
 } = require('sequelize');
 module.exports = sequelize.define('Reserva', {
-    /*Cod_Usuario: {
+    Codigo: {
         primaryKey: true,
         type: DataTypes.BIGINT,
         notNull: true,
-        unsigned: true
-    },
+        unsigned: true,
+        autoIncrement: true,
+    },/*
     Cod_Sala: {
         primaryKey: true,
         type: DataTypes.BIGINT,

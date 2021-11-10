@@ -17,11 +17,64 @@ router.get('/users', (req, res) => {
     })();
 });
 
+//get user by Codigo
+router.get('/users/:Codigo', (req, res) => {
+    console.log('entre a la funcion');
+    (async () => {
+        try {
+            const { Codigo } = req.params;
+            const result = await Usuarios.findOne({
+                where: { Codigo: Codigo },
+                force: true,
+            });
+            if (result) {
+                res.status(200).send(result);
+
+            } else {
+                res.status(404).send('Usuario no encontrado')
+            }
+        } catch (err) {
+            console.log(err);
+            res.status(404).send("Error");
+        };
+    })();
+});
+
+//Actualizar Usuario
+router.put('/users/:Codigo', (req, res) => {
+    console.log('entre a la funcion');
+    (async () => {
+        try {
+            const { Codigo } = req.params;
+            const createdUser = req.body;
+            createdUser.updatedAt = new Date().toJSON();
+            const result = await Usuarios.update({
+                Correo: createdUser.Correo,
+            }, {
+                where: { Codigo: Codigo },
+            });
+            console.log(result);
+            if (result) {
+                res.status(200).send(result);
+
+            } else {
+                res.status(404).send('Usuario no encontrado')
+            }
+        } catch (err) {
+            console.log(err);
+            res.status(404).send("Error");
+        };
+    })();
+});
+
+
+
+
 // create users
 router.post('/users', (req, res) => {
     (async () => {
         try {
-            console.log(req)
+            // console.log(req)
             const createdUser = req.body;
             createdUser.createdAt = new Date().toJSON();
             createdUser.updatedAt = new Date().toJSON();

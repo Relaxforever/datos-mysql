@@ -14,6 +14,7 @@ function createAssociation() {
     Prestamos.belongsTo(Usuarios, {
         foreignKey: 'Cod_Usuario',
         allowNull: false,
+        // primaryKey: true
     });
     Usuarios.hasMany(Prestamos, {
         foreignKey: 'Cod_Usuario',
@@ -47,6 +48,7 @@ function createAssociation() {
     SalaEstudio.hasMany(Reserva, {
         foreignKey: 'Cod_Sala',
         allowNull: false,
+        //primaryKey: true
     })
     /*                    */
 }

@@ -27,7 +27,7 @@ app.use((req, res, next) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log('Request:', req.method, req.originalUrl, ip);
 
-    res.header('Access-Control-Allow-Origin', environ.origin);
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
@@ -46,6 +46,10 @@ app.get('/', (req, res) => res.status(200).send({
 // require roots
 app.use(require('./routes/routesUsuario'));
 app.use(require('./routes/routesMaterial'));
+app.use(require('./routes/routesPrestamo'));
+app.use(require('./routes/routesSalaEstudio'));
+app.use(require('./routes/routesReserva'));
+
 
 
 

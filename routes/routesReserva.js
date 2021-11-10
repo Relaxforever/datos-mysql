@@ -1,15 +1,15 @@
-const Material = require('../models/material');
+const Reserva = require('../models/reserva');
 const express = require('express');
 const router = express.Router();
 
 //get all users
-router.get('/materials', (req, res) => {
+router.get('/reservas', (req, res) => {
     console.log('entre a la funcion');
     (async () => {
         try {
             console.log('intentando traer usuarios')
-            const allMaterial = await Material.findAll();
-            res.status(200).send(allMaterial);
+            const allUsers = await Reserva.findAll();
+            res.status(200).send(allUsers);
         } catch (err) {
             console.error(err);
             res.status(400).send('Error');
@@ -18,15 +18,15 @@ router.get('/materials', (req, res) => {
 });
 
 // create users
-router.post('/materials', (req, res) => {
+router.post('/reservas', (req, res) => {
     (async () => {
         try {
-            console.log(req)
-            const createdMaterial = req.body;
-            createdMaterial.createdAt = new Date().toJSON();
-            createdMaterial.updatedAt = new Date().toJSON();
-            const savedNewMaterial = await Material.create(createdMaterial);
-            res.status(201).send(savedNewMaterial);
+            // console.log(req)
+            const createdUser = req.body;
+            createdUser.createdAt = new Date().toJSON();
+            createdUser.updatedAt = new Date().toJSON();
+            const savedNewUser = await Reserva.create(createdUser);
+            res.status(201).send(savedNewUser)
         } catch (err) {
             console.log(err);
             res.status(404).send("Error al guardar");
@@ -36,19 +36,19 @@ router.post('/materials', (req, res) => {
 
 
 // borrar users
-router.delete('/materials/:Codigo', (req, res) => {
+router.delete('/reservas/:Codigo', (req, res) => {
     (async () => {
         try {
             const { Codigo } = req.params;
-            const result = await Material.destroy({
+            const result = await Reserva.destroy({
                 where: { Codigo: Codigo },
                 force: true,
             });
             if (result) {
-                res.status(200).send('Material Eliminado');
+                res.status(200).send('Usuario Eliminado');
 
             } else {
-                res.status(404).send('Material no encontrado')
+                res.status(404).send('Usuario no encontrado')
             }
         } catch (err) {
             console.log(err);
@@ -56,20 +56,20 @@ router.delete('/materials/:Codigo', (req, res) => {
         };
     })()
 })
-
-router.get('/materials/:Codigo', (req, res) => {
+// get reserva by Codigo Usuario
+router.get('/reservas/:Cod_Usuario', (req, res) => {
     (async () => {
         try {
-            const { Codigo } = req.params;
-            const result = await Material.findAll({
-                where: { Codigo: Codigo },
+            const { Cod_Usuario } = req.params;
+            const result = await Prestamos.findAll({
+                where: { Cod_Usuario: Cod_Usuario },
                 force: true,
             });
             if (result) {
                 res.status(200).send(result);
 
             } else {
-                res.status(404).send('Material no encontrado')
+                res.status(404).send('Prestamos no encontrado')
             }
         } catch (err) {
             console.log(err);
