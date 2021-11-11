@@ -2,6 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Prestamos', {
+
       /* Cod_Usuario: {
          primaryKey: true,
          type: Sequelize.BIGINT,
@@ -14,6 +15,13 @@ module.exports = {
          notNull: true,
          unsigned: true
        },*/
+      Codigo: {
+        primaryKey: true,
+        type: Sequelize.BIGINT,
+        notNull: true,
+        unsigned: true,
+        autoIncrement: true
+      },
       Fecha_Prestamo: {
         type: Sequelize.DATE,
         allowNull: false,

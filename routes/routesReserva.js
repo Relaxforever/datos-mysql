@@ -61,7 +61,7 @@ router.get('/reservas/:Cod_Usuario', (req, res) => {
     (async () => {
         try {
             const { Cod_Usuario } = req.params;
-            const result = await Prestamos.findAll({
+            const result = await Reserva.findAll({
                 where: { Cod_Usuario: Cod_Usuario },
                 force: true,
             });

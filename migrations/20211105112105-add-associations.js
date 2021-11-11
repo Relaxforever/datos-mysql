@@ -7,7 +7,7 @@ module.exports = {
         type: Sequelize.BIGINT,
         allowNull: false,
         unsigned: true,
-        primaryKey: true,
+        // primaryKey: true,
         foreignKey: true,
         references: {
           model: 'Usuarios',
@@ -54,7 +54,7 @@ module.exports = {
           type: Sequelize.BIGINT,
           allowNull: false,
           unsigned: true,
-          primaryKey: true,
+          // primaryKey: true,
           foreignKey: true,
           references: {
             model: 'SalaEstudio',

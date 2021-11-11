@@ -14,6 +14,13 @@ module.exports = {
          notNull: true,
          unsigned: true
        },*/
+      Codigo: {
+        primaryKey: true,
+        type: Sequelize.BIGINT,
+        notNull: true,
+        unsigned: true,
+        autoIncrement: true
+      },
       Horario_Inicio: {
         type: Sequelize.DATE,
         allowNull: false,

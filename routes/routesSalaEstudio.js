@@ -57,4 +57,55 @@ router.delete('/salaestudio/:Codigo', (req, res) => {
     })()
 })
 
+
+// recibir la Sala de Estudio con el sigiente id
+router.get('/salaestudio/:Codigo', (req, res) => {
+    (async () => {
+        try {
+            const { Codigo } = req.params;
+            const result = await SalaEstudio.findAll({
+                where: { Codigo: Codigo },
+                force: true,
+            });
+            if (result) {
+                res.status(200).send(result);
+
+            } else {
+                res.status(404).send('Sala no encontrado')
+            }
+        } catch (err) {
+            console.log(err);
+            res.status(404).send("Error");
+        };
+    })()
+})
+
+
+router.put('/salaestudio/:Codigo', (req, res) => {
+    console.log('entre a la funcion');
+    (async () => {
+        try {
+            const { Codigo } = req.params;
+            const createdUser = req.body;
+            createdUser.updatedAt = new Date().toJSON();
+            const result = await SalaEstudio.update({
+                Num_Personas_Max: createdUser.Num_Personas_Max,
+            }, {
+                where: { Codigo: Codigo },
+            });
+            console.log(result);
+            if (result) {
+                res.status(200).send(result);
+
+            } else {
+                res.status(404).send('Usuario no encontrado')
+            }
+        } catch (err) {
+            console.log(err);
+            res.status(404).send("Error");
+        };
+    })();
+});
+
+
 module.exports = router;

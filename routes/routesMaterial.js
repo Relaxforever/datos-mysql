@@ -78,4 +78,31 @@ router.get('/materials/:Codigo', (req, res) => {
     })()
 })
 
+router.put('/materials/:Codigo', (req, res) => {
+    console.log('entre a la funcion');
+    (async () => {
+        try {
+            const { Codigo } = req.params;
+            const createdUser = req.body;
+            createdUser.updatedAt = new Date().toJSON();
+            const result = await Material.update({
+                Categoria: createdUser.Categoria,
+            }, {
+                where: { Codigo: Codigo },
+            });
+            console.log(result);
+            if (result) {
+                res.status(200).send(result);
+
+            } else {
+                res.status(404).send('Usuario no encontrado')
+            }
+        } catch (err) {
+            console.log(err);
+            res.status(404).send("Error");
+        };
+    })();
+});
+
+
 module.exports = router;
